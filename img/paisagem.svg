@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="Paisagem com montanhas, sol e um lago">
+  <!-- Foto de exemplo usada quando a pessoa escolhe "Câmera" -->
+  <defs>
+    <linearGradient id="ceu" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7EC8F2"/>
+      <stop offset="1" stop-color="#FFE7B3"/>
+    </linearGradient>
+    <linearGradient id="lago" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5DB3E0"/>
+      <stop offset="1" stop-color="#2A6F97"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#ceu)"/>
+  <circle cx="310" cy="75" r="36" fill="#FFD54F"/>
+  <circle cx="310" cy="75" r="48" fill="#FFD54F" opacity="0.25"/>
+  <g fill="#FFFFFF" opacity="0.92">
+    <ellipse cx="90" cy="62" rx="42" ry="14"/>
+    <ellipse cx="122" cy="52" rx="28" ry="15"/>
+    <ellipse cx="200" cy="40" rx="30" ry="10"/>
+  </g>
+  <polygon points="-10,215 85,105 180,215" fill="#6B8899"/>
+  <polygon points="100,215 220,85 345,215" fill="#4A6577"/>
+  <polygon points="220,85 248,116 233,112 220,126 206,112 192,116" fill="#FFFFFF"/>
+  <polygon points="85,105 105,128 92,125 80,134 72,124" fill="#FFFFFF"/>
+  <polygon points="255,215 340,135 410,200 410,215" fill="#6B8899"/>
+  <rect y="205" width="400" height="95" fill="#6DBE5B"/>
+  <ellipse cx="200" cy="258" rx="150" ry="28" fill="url(#lago)"/>
+  <ellipse cx="170" cy="252" rx="40" ry="4" fill="#FFFFFF" opacity="0.4"/>
+  <g fill="#2E7D32">
+    <polygon points="30,240 45,195 60,240"/>
+    <polygon points="55,245 72,190 89,245"/>
+    <polygon points="330,240 346,192 362,240"/>
+    <polygon points="358,246 373,200 388,246"/>
+  </g>
+  <g fill="#5D4037">
+    <rect x="42" y="240" width="6" height="10"/>
+    <rect x="69" y="245" width="6" height="10"/>
+    <rect x="343" y="240" width="6" height="10"/>
+    <rect x="370" y="246" width="6" height="10"/>
+  </g>
+</svg>

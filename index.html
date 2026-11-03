@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#075E54">
+  <meta name="description" content="Simulador educativo para pessoas idosas treinarem o uso de aplicativos de mensagens com segurança. Nada é enviado de verdade.">
+  <title>Simulador de Mensagens – Treino para a Melhor Idade</title>
+  <link rel="icon" href="img/icone.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- =========================================================
+       ÍCONES (SVG genéricos, desenhados de forma simples).
+       Cada <symbol> é usado depois com <svg><use href="#nome"></use></svg>
+       ========================================================= -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-voltar" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></symbol>
+    <symbol id="i-telefone" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/></symbol>
+    <symbol id="i-enviar" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></symbol>
+    <symbol id="i-clipe" viewBox="0 0 24 24"><path d="M16.5 6v11.5c0 2.21-1.79 4-4 4s-4-1.79-4-4V5c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5v10.5c0 .55-.45 1-1 1s-1-.45-1-1V6H10v9.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V5c0-2.21-1.79-4-4-4S7 2.79 7 5v12.5c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5V6h-1.5z"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></symbol>
+    <symbol id="i-emoji" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></symbol>
+    <symbol id="i-desligar" viewBox="0 0 24 24"><path d="M12 9c-1.6 0-3.15.25-4.6.72v3.1c0 .39-.23.74-.56.9-.98.49-1.87 1.12-2.66 1.85-.18.18-.43.28-.7.28-.28 0-.53-.11-.71-.29L.29 13.08c-.18-.17-.29-.42-.29-.7 0-.28.11-.53.29-.71C3.34 8.78 7.46 7 12 7s8.66 1.78 11.71 4.67c.18.18.29.43.29.71 0 .28-.11.53-.29.71l-2.48 2.48c-.18.18-.43.29-.71.29-.27 0-.52-.11-.7-.28-.79-.74-1.69-1.36-2.67-1.85-.33-.16-.56-.5-.56-.9v-3.1C15.15 9.25 13.6 9 12 9z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></symbol>
+  </svg>
+
+  <!-- =========================================================
+       MOLDURA DO CELULAR
+       Em celulares ocupa a tela toda; em telas grandes vira uma
+       "moldura" de celular centralizada.
+       ========================================================= -->
+  <div class="celular" id="celular">
+
+    <!-- Faixa fixa avisando que é só um treino + botões de tamanho da letra -->
+    <div class="faixa-treino">
+      <p>🎓 <strong>MODO TREINO</strong> – nada aqui é enviado de verdade</p>
+      <div class="controle-letra" role="group" aria-label="Tamanho da letra">
+        <button type="button" id="btn-letra-menor" class="botao-letra" aria-label="Diminuir a letra">A-</button>
+        <button type="button" id="btn-letra-maior" class="botao-letra" aria-label="Aumentar a letra">A+</button>
+      </div>
+    </div>
+
+    <!-- Área onde as telas aparecem (só uma por vez fica visível) -->
+    <main class="area-telas" id="area-telas">
+
+      <!-- ===================== TELA INICIAL ===================== -->
+      <section id="tela-inicio" class="tela tela-conteudo ativa" aria-labelledby="titulo-inicio">
+        <div class="conteudo">
+          <div class="capa">
+            <div class="capa-icone" aria-hidden="true">💬</div>
+            <h1 id="titulo-inicio">Simulador de Mensagens</h1>
+            <p class="subtitulo">Treino para a Melhor Idade</p>
+          </div>
+
+          <p id="texto-boas-vindas" class="texto-explicacao">
+            Olá! 👋 Aqui você treina como mandar mensagens, áudios e fotos, e como fazer chamadas.
+            <strong>Pode errar sem medo:</strong> nada é enviado de verdade.
+            Faça com calma, no seu tempo.
+          </p>
+          <button type="button" class="botao-ouvir" data-ouvir="#texto-boas-vindas">🔊 Ouvir</button>
+
+          <button type="button" id="btn-comecar" class="botao-grande">▶ Começar treino</button>
+
+          <h2 class="titulo-secao">Suas missões</h2>
+          <p id="progresso-missoes" class="progresso"></p>
+          <ol id="lista-missoes" class="lista-missoes"></ol>
+
+          <div class="botoes-extras">
+            <button type="button" id="btn-explorar" class="botao-secundario">💬 Explorar livremente</button>
+            <button type="button" id="btn-ir-quiz" class="botao-secundario">📝 Quiz final</button>
+            <button type="button" id="btn-recomecar" class="botao-discreto">🔄 Recomeçar as missões do zero</button>
+          </div>
+
+          <footer class="rodape-inicio">
+            <button type="button" id="btn-resultados" class="botao-discreto">Resultados da oficina</button>
+          </footer>
+        </div>
+      </section>
+
+      <!-- ===================== LISTA DE CONVERSAS ===================== -->
+      <section id="tela-conversas" class="tela" aria-label="Lista de conversas">
+        <header class="topo-app">
+          <div class="topo-linha">
+            <h1 class="topo-titulo">Mensagens</h1>
+            <button type="button" id="btn-inicio" class="botao-topo-texto">🏠 Início</button>
+          </div>
+          <nav class="abas" role="tablist" aria-label="Seções">
+            <button type="button" class="aba ativa" data-aba="conversas" role="tab" aria-selected="true">Conversas</button>
+            <button type="button" class="aba" data-aba="status" role="tab" aria-selected="false">Status</button>
+            <button type="button" class="aba" data-aba="chamadas" role="tab" aria-selected="false">Chamadas</button>
+          </nav>
+        </header>
+
+        <!-- Aba "Conversas": preenchida pelo JavaScript -->
+        <div class="painel-aba ativa" id="painel-conversas" role="tabpanel">
+          <ul id="lista-conversas" class="lista-conversas"></ul>
+        </div>
+
+        <!-- Aba "Status": conteúdo fixo, só para conhecer -->
+        <div class="painel-aba" id="painel-status" role="tabpanel">
+          <p class="explicacao-aba">📢 No <strong>Status</strong>, seus contatos publicam fotos e recados. Eles somem depois de 24 horas.</p>
+          <ul class="lista-conversas">
+            <li>
+              <button type="button" class="item-conversa item-status" data-status="meu">
+                <span class="avatar" style="background:#546E7A" aria-hidden="true">Eu</span>
+                <span class="conversa-meio">
+                  <span class="conversa-nome">Meu status</span>
+                  <span class="conversa-previa">Toque para publicar</span>
+                </span>
+              </button>
+            </li>
+            <li class="subtitulo-lista">Atualizações recentes</li>
+            <li>
+              <button type="button" class="item-conversa item-status" data-status="Filha Ana">
+                <span class="avatar anel" style="background:#C2185B" aria-hidden="true">A</span>
+                <span class="conversa-meio">
+                  <span class="conversa-nome">Filha Ana</span>
+                  <span class="conversa-previa">Hoje, de manhã</span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="item-conversa item-status" data-status="Neto Pedro">
+                <span class="avatar anel" style="background:#3949AB" aria-hidden="true">P</span>
+                <span class="conversa-meio">
+                  <span class="conversa-nome">Neto Pedro</span>
+                  <span class="conversa-previa">Ontem, à noite</span>
+                </span>
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Aba "Chamadas": histórico das chamadas feitas no treino -->
+        <div class="painel-aba" id="painel-chamadas" role="tabpanel">
+          <p class="explicacao-aba">📞 Aqui aparecem as chamadas que você fez no treino.</p>
+          <ul id="lista-chamadas" class="lista-conversas"></ul>
+        </div>
+      </section>
+
+      <!-- ===================== CONVERSA (CHAT) ===================== -->
+      <section id="tela-chat" class="tela" aria-label="Conversa">
+        <header class="topo-chat">
+          <button type="button" id="btn-voltar" class="botao-icone" aria-label="Voltar para a lista de conversas">
+            <svg class="ico"><use href="#i-voltar"></use></svg>
+          </button>
+          <div id="chat-avatar"></div>
+          <div class="chat-info">
+            <h2 id="chat-nome"></h2>
+            <p id="chat-status"></p>
+          </div>
+          <button type="button" id="btn-video" class="botao-icone" aria-label="Fazer chamada de vídeo">
+            <svg class="ico"><use href="#i-video"></use></svg>
+          </button>
+          <button type="button" id="btn-voz" class="botao-icone" aria-label="Fazer chamada de voz">
+            <svg class="ico"><use href="#i-telefone"></use></svg>
+          </button>
+        </header>
+
+        <!-- Balões de mensagem (preenchido pelo JavaScript) -->
+        <div id="lista-mensagens" class="lista-mensagens"></div>
+
+        <!-- Painel de emojis (aparece ao tocar na carinha) -->
+        <div id="painel-emojis" class="painel-emojis" hidden></div>
+
+        <!-- Opções do clipe: Câmera / Galeria -->
+        <div id="menu-anexos" class="menu-anexos" hidden>
+          <button type="button" class="opcao-anexo" data-anexo="camera">
+            <span class="bola-anexo" style="background:#D81B60" aria-hidden="true">📷</span>
+            Câmera
+          </button>
+          <button type="button" class="opcao-anexo" data-anexo="galeria">
+            <span class="bola-anexo" style="background:#7E57C2" aria-hidden="true">🖼️</span>
+            Galeria
+          </button>
+        </div>
+
+        <!-- Aparece no lugar da barra de digitação quando o contato foi bloqueado -->
+        <div id="aviso-bloqueado" class="aviso-bloqueado" hidden>
+          <p>🚫 Você bloqueou este número.</p>
+          <button type="button" id="btn-desbloquear" class="botao-secundario">Desbloquear</button>
+        </div>
+
+        <!-- Barra inferior: emoji, campo, clipe, câmera e botão verde -->
+        <div id="barra-inferior" class="barra-inferior">
+          <div class="campo-caixa">
+            <button type="button" id="btn-emoji" class="botao-icone-cinza" aria-label="Abrir emojis" aria-expanded="false">
+              <svg class="ico"><use href="#i-emoji"></use></svg>
+            </button>
+            <input id="campo-mensagem" type="text" placeholder="Mensagem" autocomplete="off" aria-label="Escreva sua mensagem">
+            <button type="button" id="botao-clipe" class="botao-icone-cinza" aria-label="Enviar foto: câmera ou galeria" aria-expanded="false">
+              <svg class="ico"><use href="#i-clipe"></use></svg>
+            </button>
+            <button type="button" id="btn-camera" class="botao-icone-cinza" aria-label="Tirar foto com a câmera">
+              <svg class="ico"><use href="#i-camera"></use></svg>
+            </button>
+          </div>
+
+          <!-- Mostrado somente enquanto grava o áudio -->
+          <div class="gravacao" aria-live="polite">
+            <span class="ponto-gravando" aria-hidden="true"></span>
+            <span>Gravando... <strong id="tempo-gravacao">0:00</strong></span>
+            <span class="gravacao-dica">Solte para enviar</span>
+          </div>
+
+          <button type="button" id="botao-principal" class="botao-principal" aria-label="Aperte e segure para gravar um áudio">
+            <svg class="ico"><use id="uso-icone-principal" href="#i-mic"></use></svg>
+          </button>
+        </div>
+
+        <!-- Menu que aparece ao tocar e segurar uma mensagem suspeita -->
+        <div id="menu-mensagem" class="fundo-escuro menu-mensagem" hidden>
+          <div class="folha" role="dialog" aria-modal="true" aria-labelledby="titulo-menu-mensagem">
+            <p id="titulo-menu-mensagem" class="folha-titulo">O que você quer fazer com esta mensagem?</p>
+            <button type="button" class="opcao-folha" data-opcao="responder">↩️ Responder</button>
+            <button type="button" class="opcao-folha" data-opcao="bloquear">🚫 Bloquear</button>
+            <button type="button" class="opcao-folha" data-opcao="denunciar">⚠️ Denunciar</button>
+            <button type="button" class="opcao-folha cancelar" data-opcao="cancelar">Cancelar</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== CHAMADA (VOZ OU VÍDEO) ===================== -->
+      <div id="tela-chamada" class="chamada" hidden role="dialog" aria-modal="true" aria-labelledby="chamada-nome">
+        <p id="chamada-tipo" class="chamada-tipo"></p>
+        <div id="chamada-avatar"></div>
+        <h2 id="chamada-nome" class="chamada-nome"></h2>
+        <p id="chamada-status" class="chamada-status" aria-live="polite">Chamando...</p>
+        <div class="video-voce" aria-hidden="true"><span>🙂</span>Você</div>
+        <div class="chamada-botoes">
+          <div class="grupo-botao-chamada">
+            <button type="button" id="btn-mudo" class="botao-chamada-cinza" aria-pressed="false" aria-label="Deixar o microfone mudo">
+              <svg class="ico"><use href="#i-mic"></use></svg>
+            </button>
+            <span>Mudo</span>
+          </div>
+          <div class="grupo-botao-chamada">
+            <button type="button" id="btn-desligar" class="botao-desligar" aria-label="Desligar a chamada">
+              <svg class="ico"><use href="#i-desligar"></use></svg>
+            </button>
+            <span>Desligar</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== QUIZ: NOME ===================== -->
+      <section id="tela-quiz-nome" class="tela tela-conteudo" aria-labelledby="titulo-quiz-nome">
+        <header class="topo-simples">
+          <button type="button" class="botao-icone" data-ir="inicio" aria-label="Voltar ao início">
+            <svg class="ico"><use href="#i-voltar"></use></svg>
+          </button>
+          <h1 id="titulo-quiz-nome">Quiz final</h1>
+        </header>
+        <div class="conteudo">
+          <p id="texto-quiz-intro" class="texto-explicacao">
+            Vamos ver o que você aprendeu? 😊 São 8 perguntas.
+            Não tem tempo: responda com calma.
+          </p>
+          <button type="button" class="botao-ouvir" data-ouvir="#texto-quiz-intro">🔊 Ouvir</button>
+          <label for="campo-nome" class="rotulo">Seu primeiro nome (se quiser):</label>
+          <input id="campo-nome" class="campo-grande" type="text" maxlength="30" autocomplete="off" placeholder="Ex.: Maria">
+          <button type="button" id="btn-iniciar-quiz" class="botao-grande">Começar o quiz ▶</button>
+        </div>
+      </section>
+
+      <!-- ===================== QUIZ: PERGUNTAS ===================== -->
+      <section id="tela-quiz" class="tela tela-conteudo" aria-labelledby="quiz-pergunta">
+        <header class="topo-simples">
+          <button type="button" class="botao-icone" data-ir="inicio" aria-label="Sair do quiz e voltar ao início">
+            <svg class="ico"><use href="#i-voltar"></use></svg>
+          </button>
+          <h1>Quiz</h1>
+          <span id="quiz-progresso" class="quiz-progresso"></span>
+        </header>
+        <div class="conteudo">
+          <div class="barra-progresso" aria-hidden="true"><div id="quiz-barra"></div></div>
+          <div id="quiz-leitura">
+            <h2 id="quiz-pergunta" class="quiz-pergunta"></h2>
+            <div id="quiz-opcoes" class="quiz-opcoes"></div>
+            <div id="quiz-feedback" class="quiz-feedback" hidden aria-live="polite"></div>
+          </div>
+          <button type="button" class="botao-ouvir" data-ouvir="#quiz-leitura">🔊 Ouvir</button>
+          <button type="button" id="btn-proxima" class="botao-grande" hidden>Próxima pergunta ▶</button>
+        </div>
+      </section>
+
+      <!-- ===================== QUIZ: PLACAR ===================== -->
+      <section id="tela-quiz-fim" class="tela tela-conteudo" aria-labelledby="placar-texto">
+        <div id="confete-quiz" class="confete-area" aria-hidden="true"></div>
+        <div class="conteudo centro">
+          <div id="quiz-fim-leitura">
+            <div id="placar-emoji" class="placar-emoji" aria-hidden="true">🏆</div>
+            <h1 id="placar-texto" class="placar-texto"></h1>
+            <p id="placar-mensagem" class="texto-explicacao"></p>
+          </div>
+          <button type="button" class="botao-ouvir" data-ouvir="#quiz-fim-leitura">🔊 Ouvir</button>
+          <button type="button" id="btn-quiz-denovo" class="botao-grande">🔄 Fazer de novo</button>
+          <button type="button" class="botao-secundario" data-ir="inicio">🏠 Voltar ao início</button>
+        </div>
+      </section>
+
+      <!-- ===================== RESULTADOS DA OFICINA ===================== -->
+      <section id="tela-resultados" class="tela tela-conteudo" aria-labelledby="titulo-resultados">
+        <header class="topo-simples">
+          <button type="button" class="botao-icone" data-ir="inicio" aria-label="Voltar ao início">
+            <svg class="ico"><use href="#i-voltar"></use></svg>
+          </button>
+          <h1 id="titulo-resultados">Resultados da oficina</h1>
+        </header>
+        <div class="conteudo">
+          <p class="texto-explicacao">
+            Quem fez o quiz neste aparelho, nesta sessão.
+            Anote os resultados antes de fechar o navegador.
+          </p>
+          <div id="area-resultados"></div>
+          <button type="button" id="btn-limpar-resultados" class="botao-secundario">🗑️ Limpar a lista</button>
+        </div>
+      </section>
+
+      <!-- Aviso rápido (aparece por alguns segundos; toque para fechar) -->
+      <div id="aviso-rapido" class="aviso-rapido" role="status" hidden></div>
+    </main>
+
+    <!-- ===================== BALÃO DE DICA DAS MISSÕES ===================== -->
+    <aside id="dica" class="dica" hidden aria-live="polite">
+      <div class="dica-topo">
+        <span id="dica-missao" class="dica-missao"></span>
+        <button type="button" id="dica-sair" class="botao-sair-missao" aria-label="Sair da missão">✖ Sair</button>
+      </div>
+      <div class="dica-corpo">
+        <p id="dica-texto" class="dica-texto"></p>
+        <button type="button" class="botao-ouvir" data-ouvir="#dica-texto">🔊 Ouvir</button>
+      </div>
+    </aside>
+
+    <!-- ===================== JANELA DE AVISO (MODAL) ===================== -->
+    <div id="modal" class="fundo-escuro modal-fundo" hidden>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+        <div id="modal-leitura">
+          <div id="modal-icone" class="modal-icone" aria-hidden="true"></div>
+          <h2 id="modal-titulo" class="modal-titulo"></h2>
+          <div id="modal-conteudo" class="modal-conteudo"></div>
+        </div>
+        <div class="modal-botoes">
+          <button type="button" class="botao-ouvir" data-ouvir="#modal-leitura">🔊 Ouvir</button>
+          <button type="button" id="modal-ok" class="botao-grande">Entendi 👍</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== TELA DE PARABÉNS (com confete) ===================== -->
+    <div id="parabens" class="parabens" hidden role="dialog" aria-modal="true" aria-labelledby="parabens-titulo">
+      <div id="confete" class="confete-area" aria-hidden="true"></div>
+      <div class="parabens-caixa">
+        <div id="parabens-leitura">
+          <div class="parabens-emoji" aria-hidden="true">🎉</div>
+          <h2 id="parabens-titulo" class="parabens-titulo">Parabéns!</h2>
+          <p id="parabens-texto"></p>
+          <p id="parabens-licao" class="caixa-dica"></p>
+        </div>
+        <button type="button" class="botao-ouvir" data-ouvir="#parabens-leitura">🔊 Ouvir</button>
+        <button type="button" id="parabens-proxima" class="botao-grande">▶ Próxima missão</button>
+        <button type="button" id="parabens-inicio" class="botao-secundario">🏠 Voltar ao início</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
